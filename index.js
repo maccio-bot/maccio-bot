@@ -1,5 +1,5 @@
 const SlackBot = require('slackbots');
-const player = require('play-sound')(opts = {})
+const player = require('play-sound')(opts = {});
 const _ = require('lodash');
 const path = require('path');
 const utils = require('./utils');
