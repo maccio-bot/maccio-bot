@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.13.1",
+    "play-sound": "0.0.9",
     "slackbots": "^0.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
   }
 }
