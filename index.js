@@ -2,10 +2,11 @@ var SlackBot = require('slackbots');
 var player = require('play-sound')(opts = {})
 const _ = require('lodash');
 const path = require('path');
+const utils = require('./utils');
 
 // create a bot
 var bot = new SlackBot({
-  token: process.env.TOKEN, // Add a bot https://my.slack.com/services/new/bot and put the token
+  token: utils.config.TOKEN,
   name: 'maccio-bot'
 });
 
@@ -26,15 +27,15 @@ bot.on('start', function() {
 
 });
 
-bot.on('message', function(data) {
+bot.on(utils.types.MESSAGE, function(data) {
 
-  if (data.type === 'message' && data.subtype === 'channel_join') {
+  if (data.type === utils.types.MESSAGE && data.subtype === utils.types.CHANNEL_JOIN) {
     // FIX ME PLEASE
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), 'hai joinato ma se poi te ne penti?');
-  } else if( data.type === 'message' && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
+  } else if( data.type === utils.types.MESSAGE && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
     cazzoMeneFrega();
     //bot.postMessageToUser(getUserById(bot.users,data.username), 'aasdaddasd');
-  } else if (data.type === 'message' && data.username !== bot.name) {
+  } else if (data.type === utils.types.MESSAGE && data.username !== bot.name) {
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`);
   }
 
@@ -43,7 +44,7 @@ bot.on('message', function(data) {
 function getChannelName(channels, id) {
   return _.find(channels, (channel) => {
     return channel.id === id;
-  })
+  });
 }
 
 function isMentioningMaccio(data, id) {
