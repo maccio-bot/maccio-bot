@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Lo spread aumenta...
  * Scusa hai detto Spritz?
@@ -9,10 +11,10 @@
  */
 
 function haiDettoSpritz (data) {
-  var match = data.text.match(/sprea?d/i)
+  const match = data.text.match(/sprea?d/i);
 
-  if (match) return true
-  else return false
+  if (match) return true;
+  else return false;
 }
 
-module.exports = haiDettoSpritz
+module.exports = haiDettoSpritz;
