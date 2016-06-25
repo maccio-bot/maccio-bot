@@ -23,7 +23,6 @@ bot.on(utils.types.MESSAGE, function(data) {
   console.log('-----------')
 
   if (data.type === utils.types.MESSAGE && data.subtype === utils.types.CHANNEL_JOIN) {
-    // FIX ME PLEASE
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), 'hai joinato ma se poi te ne penti?', params);
     sePoiTeNePenti();
   }
