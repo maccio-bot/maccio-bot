@@ -21,18 +21,29 @@ bot.on('start', function() {
 });
 
 bot.on(utils.types.MESSAGE, function(data) {
+  console.log(data)
+  console.log('-----------')
 
   if (data.type === utils.types.MESSAGE && data.subtype === utils.types.CHANNEL_JOIN) {
-    // FIX ME PLEASE
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), 'hai joinato ma se poi te ne penti?', params);
     sePoiTeNePenti();
-  } else if( data.type === utils.types.MESSAGE && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
+  }
+
+  if( data.type === utils.types.MESSAGE && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
     cazzoMeneFrega();
     console.log(data);
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), `<@${data.user}>: Ma amme che cazzo menefrega amme!!`, params);
-  } else if (data.type === utils.types.MESSAGE && data.username !== bot.name) {
+  }
+
+  if (data.type === utils.types.MESSAGE && data.username !== bot.name) {
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
   }
+
+  if (data.type === utils.types.MESSAGE && data.username === 'github-commit-push') {
+    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
+  }
+
+
 
 });
 
