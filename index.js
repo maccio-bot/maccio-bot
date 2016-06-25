@@ -11,20 +11,7 @@ var bot = new SlackBot({
 });
 
 bot.on('start', function() {
-  // more information about additional params https://api.slack.com/methods/chat.postMessage
-  // var params = {
-  //   icon_emoji: ':cat:'
-  // };
-  //
-  // // define channel, where bot exist. You can adjust it there https://my.slack.com/services
-  // bot.postMessageToChannel('general', 'meow!', params);
-  //
-  // // define existing username instead of 'user_name'
-  // bot.postMessageToUser('user_name', 'meow!', params);
-  //
-  // // define private group instead of 'private_group', where bot exist
-  // bot.postMessageToGroup('private_group', 'meow!', params);
-
+  
 });
 
 bot.on(utils.types.MESSAGE, function(data) {
@@ -32,6 +19,7 @@ bot.on(utils.types.MESSAGE, function(data) {
   if (data.type === utils.types.MESSAGE && data.subtype === utils.types.CHANNEL_JOIN) {
     // FIX ME PLEASE
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), 'hai joinato ma se poi te ne penti?');
+    sePoiTeNePenti();
   } else if( data.type === utils.types.MESSAGE && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
     cazzoMeneFrega();
     //bot.postMessageToUser(getUserById(bot.users,data.username), 'aasdaddasd');
@@ -53,12 +41,15 @@ function isMentioningMaccio(data, id) {
 }
 
 function containsQuestion(data) {
-  console.log(data)
   return data.text.toLowerCase().indexOf('?') > -1;
 }
 
 function cazzoMeneFrega() {
   player.play(path.join(__dirname, '/sounds/', 'Maccio-Cazzo-Me-Ne-Frega.mp3'), function(err){})
+}
+
+function sePoiTeNePenti() {
+  player.play(path.join(__dirname, '/sounds/', 'Maccio-Te-Ne-Penti.mp3'), function(err){})
 }
 
 function getUserById(users,id) {
