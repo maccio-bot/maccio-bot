@@ -19,6 +19,7 @@ bot.on('start', function() {
 });
 
 bot.on(utils.types.MESSAGE, function(data) {
+  console.log(data)
 
   if (data.type === utils.types.MESSAGE && data.subtype === utils.types.CHANNEL_JOIN) {
     // FIX ME PLEASE
