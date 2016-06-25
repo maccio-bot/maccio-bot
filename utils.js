@@ -1,7 +1,8 @@
 'use strict';
 
 exports.config = {
-    TOKEN: process.env.TOKEN || 'SCOPPAREE'
+    TOKEN: process.env.TOKEN || 'SCOPPAREE',
+    AVATAR: 'https://avatars2.githubusercontent.com/u/20127770?v=3&s=200'
 };
 
 exports.types = {
