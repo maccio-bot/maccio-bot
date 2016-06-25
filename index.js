@@ -56,13 +56,14 @@ bot.on(utils.types.MESSAGE, function(data) {
 
   if (data.type === utils.types.MESSAGE && haiDetto('scopare', data)) {
     playSound('scopare');
+    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `https://www.youtube.com/watch?v=d_tc74PP7P8`, params);
   }
 
   if (data.type === utils.types.MESSAGE && haiDetto('suv', data)) {
     playSound('suv');
   }
 
-  if (data.type === utils.types.MESSAGE && haiDetto('bravo', data)) {
+  if (data.type === utils.types.MESSAGE && haiDetto(['bravo', 'mito'], data)) {
     playSound('seiUnMito');
   }
 
