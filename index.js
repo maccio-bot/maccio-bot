@@ -1,5 +1,7 @@
+'use strict';
+
 const SlackBot = require('slackbots');
-const player = require('play-sound')(opts = {});
+const player = require('play-sound')({});
 const _ = require('lodash');
 const path = require('path');
 const utils = require('./utils');
@@ -10,7 +12,7 @@ const bot = new SlackBot({
   name: 'maccio-bot'
 });
 
-var params = {
+const params = {
   icon_url: utils.config.AVATAR
 };
 
@@ -50,15 +52,15 @@ function containsQuestion(data) {
 }
 
 function cazzoMeneFrega() {
-  player.play(path.join(__dirname, '/sounds/', 'cazzoMeNeFrega.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', 'cazzoMeNeFrega.mp3'), function(err){});
 }
 
 function playSound(name) {
-  player.play(path.join(__dirname, '/sounds/', name + '.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', name + '.mp3'), function(err){});
 }
 
 function sePoiTeNePenti() {
-  player.play(path.join(__dirname, '/sounds/', 'teNePenti.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', 'teNePenti.mp3'), function(err){});
 }
 
 function getUsernameById(users,id) {
