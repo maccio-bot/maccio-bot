@@ -50,11 +50,15 @@ function containsQuestion(data) {
 }
 
 function cazzoMeneFrega() {
-  player.play(path.join(__dirname, '/sounds/', 'Maccio-Cazzo-Me-Ne-Frega.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', 'cazzoMeNeFrega.mp3'), function(err){})
+}
+
+function playSound(name) {
+  player.play(path.join(__dirname, '/sounds/', name + '.mp3'), function(err){})
 }
 
 function sePoiTeNePenti() {
-  player.play(path.join(__dirname, '/sounds/', 'Maccio-Te-Ne-Penti.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', 'teNePenti.mp3'), function(err){})
 }
 
 function getUsernameById(users,id) {
