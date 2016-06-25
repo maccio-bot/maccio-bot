@@ -27,15 +27,15 @@ bot.on('start', function() {
 });
 
 bot.on('message', function(data) {
-  
+
   if (data.type === 'message' && data.subtype === 'channel_join') {
     // FIX ME PLEASE
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), 'hai joinato ma se poi te ne penti?');
-  } else if (data.type === 'message' && data.username !== bot.name) {
-    bot.postMessageToChannel(data.channel, `si molto bello "${data.text}" ma meglio SCOPARE!!!`);
-  } else if( data.type === 'message' && containsQuestion(data) && isMentioningMaccio(data)) {
+  } else if( data.type === 'message' && containsQuestion(data) && isMentioningMaccio(data, bot.self.id)) {
     cazzoMeneFrega();
     //bot.postMessageToUser(getUserById(bot.users,data.username), 'aasdaddasd');
+  } else if (data.type === 'message' && data.username !== bot.name) {
+    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`);
   }
 
 });
@@ -46,10 +46,9 @@ function getChannelName(channels, id) {
   })
 }
 
-function isMentioningMaccio(data) {
-  console.log(data)
-  return data.text.toLowerCase().indexOf('maccio-bot') > -1 ||
-      data.text.toLowerCase().indexOf(this.name) > -1;
+function isMentioningMaccio(data, id) {
+  return data.text.toLowerCase().indexOf('maccio') > -1 ||
+      data.text.indexOf(id) > -1;
 }
 
 function containsQuestion(data) {
