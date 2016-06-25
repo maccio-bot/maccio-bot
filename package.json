@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_PATH=src mocha"
+    "test": "NODE_PATH=src mocha",
+    "lint": "eslint . --ext .js"
   },
   "precommit": [
+    "lint",
     "test"
   ],
   "keywords": [],

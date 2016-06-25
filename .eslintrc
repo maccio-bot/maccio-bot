@@ -1,5 +1,5 @@
 {
   "rules": {
-    "semi": ["error", "always"]
+    "semi": 2
   }
 }
