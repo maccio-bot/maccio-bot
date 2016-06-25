@@ -5,6 +5,8 @@ const player = require('play-sound')({});
 const _ = require('lodash');
 const path = require('path');
 const utils = require('./utils');
+const haiDettoSpritz = require('./src/haiDettoSpritz');
+const haiDetto = require('./src/haiDetto');
 
 // create a bot
 const bot = new SlackBot({
@@ -40,12 +42,31 @@ bot.on(utils.types.MESSAGE, function(data) {
   }
 
   if (data.type === utils.types.MESSAGE && data.bot_id === 'B1L961WGP') {
-    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
+    // bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
   }
 
+  // if (data.type === utils.types.MESSAGE && haiDettoSpritz(data)) {
+    // playSound('valori');
+    // bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
+  // }
 
+  if (data.type === utils.types.MESSAGE && haiDetto('valori', data)) {
+    playSound('valori');
+  }
 
-});
+  if (data.type === utils.types.MESSAGE && haiDetto('scopare', data)) {
+    playSound('scopare');
+  }
+
+  if (data.type === utils.types.MESSAGE && haiDetto('suv', data)) {
+    playSound('suv');
+  }
+
+  if (data.type === utils.types.MESSAGE && haiDetto('bravo', data)) {
+    playSound('seiUnMito');
+  }
+
+  });
 
 function getChannelName(channels, id) {
   return _.find(channels, (channel) => {
