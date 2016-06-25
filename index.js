@@ -34,10 +34,10 @@ bot.on(utils.types.MESSAGE, function(data) {
   }
 
   if (data.type === utils.types.MESSAGE && data.username !== bot.name) {
-    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
+    // bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
   }
 
-  if (data.type === utils.types.MESSAGE && data.username === 'github-commit-push') {
+  if (data.type === utils.types.MESSAGE && data.bot_id === 'B1L961WGP') {
     bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`, params);
   }
 
