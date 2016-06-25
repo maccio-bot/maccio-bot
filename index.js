@@ -36,7 +36,7 @@ bot.on(utils.types.MESSAGE, function(data) {
     cazzoMeneFrega();
     //bot.postMessageToUser(getUserById(bot.users,data.username), 'aasdaddasd');
   } else if (data.type === utils.types.MESSAGE && data.username !== bot.name) {
-    bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`);
+    // bot.postMessageToChannel(getChannelName(this.channels, data.channel), `si molto bello "${data.text}" ma meglio SCOPARE!!!`);
   }
 
 });
@@ -44,7 +44,7 @@ bot.on(utils.types.MESSAGE, function(data) {
 function getChannelName(channels, id) {
   return _.find(channels, (channel) => {
     return channel.id === id;
-  });
+  }).name;
 }
 
 function isMentioningMaccio(data, id) {
@@ -58,7 +58,11 @@ function containsQuestion(data) {
 }
 
 function cazzoMeneFrega() {
-  player.play(path.join(__dirname, '/sounds/', 'Maccio-Cazzo-Me-Ne-Frega.mp3'), function(err){})
+  player.play(path.join(__dirname, '/sounds/', 'cazzoMeNeFrega.mp3'), function(err){})
+}
+
+function playSound(name) {
+  player.play(path.join(__dirname, '/sounds/', name + '.mp3'), function(err){})
 }
 
 function getUserById(users,id) {
